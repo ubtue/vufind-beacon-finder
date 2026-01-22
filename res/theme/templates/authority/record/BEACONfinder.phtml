@@ -1,0 +1,20 @@
+<?php $authorityId = $this->driver->getGndNumber(); ?>
+<p><b>BEACONfinder</b></p>
+<?php $result = $this->BEACONfinder->getByAuthorityId($authorityId); ?>
+<?php if (!$result || count($result) == 0): ?>
+  <p>Not found</p>
+<?php else: ?>
+  <ul>
+    <?php foreach ($result as $item): ?>
+      <li>
+        <?php if (!empty($item->getNAME()) && !empty($item->getTargetUri())): ?>
+          <a href="<?=$item->getTargetUri()?>" target="_blank"><?=htmlspecialchars($item->getNAME())?></a>
+        <?php else: ?>
+          <?=$item->getBeaconUri()?>
+        <?php endif; ?>
+      </li>
+    <?php endforeach; ?>
+  </ul>
+  <!-- Debug example -->
+  <!--<pre><?=print_r($result, true)?></pre><br>-->
+<?php endif; ?>

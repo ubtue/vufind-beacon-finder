@@ -1,0 +1,6 @@
+/vendor
+
+.php_cs_cache
+.phpstan_cache
+.rector
+/nbproject/private/
