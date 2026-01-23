@@ -6,8 +6,6 @@ class Service implements \VuFind\Http\CachingDownloaderAwareInterface
 {
     use \VuFind\Http\CachingDownloaderAwareTrait;
 
-    protected $downloaderCacheId = 'BEACONfinder';
-
     protected $baseUrl;
 
     protected const ENDPOINT_URL_GET_BY_ID = '/records/';
@@ -16,6 +14,7 @@ class Service implements \VuFind\Http\CachingDownloaderAwareInterface
     public function __construct(\Laminas\Config\Config $config)
     {
         $this->baseUrl = $config->baseUrl ?? 'http://127.0.0.1:8000';
+        $this->downloaderCacheId = 'BEACONfinder';
     }
 
     protected function query(string $endpointUrl, string $id): ?Result
