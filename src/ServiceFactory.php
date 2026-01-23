@@ -12,7 +12,8 @@ class ServiceFactory implements FactoryInterface
         $requestedName,
         ?array $options = null
     ) {
-        $obj = new $requestedName();
+        $obj = new $requestedName($container->get(\VuFind\Config\PluginManager::class)
+            ->get('BEACONfinder'));
         if ($obj instanceof \VuFind\Http\CachingDownloaderAwareInterface) {
             $obj->setCachingDownloader($container->get(\VuFind\Http\CachingDownloader::class));
         }
