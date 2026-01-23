@@ -1,0 +1,3 @@
+<div id="beacon_placeholder"></div>
+<?=$this->assetManager()->outputInlineScriptLink('BEACONfinder.js')?>
+<?=$this->assetManager()->outputInlineScriptString('BEACONFinder.getReferencesByAuthorityId(' . $this->authorityId . ');')?>

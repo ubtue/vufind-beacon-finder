@@ -1,6 +1,5 @@
-<?php $authorityId = $this->driver->getGndNumber(); ?>
 <p><b>BEACONfinder</b></p>
-<?php $result = $this->BEACONfinder->getByAuthorityId($authorityId); ?>
+<?php $result = $this->BEACONfinder->getByAuthorityId($this->authorityId); ?>
 <?php if (!$result || count($result) == 0): ?>
   <p>Not found</p>
 <?php else: ?>
@@ -15,6 +14,4 @@
       </li>
     <?php endforeach; ?>
   </ul>
-  <!-- Debug example -->
-  <!--<pre><?=print_r($result, true)?></pre><br>-->
 <?php endif; ?>
