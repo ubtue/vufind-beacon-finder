@@ -8,12 +8,19 @@ class Service implements \VuFind\Http\CachingDownloaderAwareInterface
 
     protected $baseUrl;
 
+    protected $blacklist = [];
+
+    protected $whitelist = [];
+
     protected const ENDPOINT_URL_GET_BY_ID = '/records/';
     protected const ENDPOINT_URL_GET_BY_AUTHORITY_ID = '/records/by-authority/';
 
     public function __construct(\Laminas\Config\Config $config)
     {
         $this->baseUrl = $config->baseUrl ?? 'http://127.0.0.1:8000';
+        $this->blacklist = $config->blacklist ?? [];
+        $this->whitelist = $config->whitelist ?? [];
+
         $this->downloaderCacheId = 'BEACONfinder';
     }
 
@@ -21,7 +28,7 @@ class Service implements \VuFind\Http\CachingDownloaderAwareInterface
     {
         $fullUrl = $this->baseUrl . $endpointUrl . $id;
         $json = $this->cachingDownloader->downloadJson($fullUrl);
-        return new Result($json);
+        return new Result($json, $this->blacklist, $this->whitelist);
     }
 
     public function getById(string $id): ?Result

@@ -52,7 +52,7 @@ Another option might be to extend the Solr schema, add the information when impo
 
     Per default, your BEACONfinder service is running locally on port 8000.
     If you want to change this, copy the file `res/config/BEACONfinder.ini` to your `local/config/vufind` directory
-    and change the corresponding `baseUrl` setting.
+    and change the corresponding `baseUrl` setting. You can also configure black/whitelists here if necessary.
 
     Regarding Cache settings, the BEACONfinder uses its own sub-section.
     You can influence the cache settings either by changing the global settings in the `config.ini` `[Cache]` section,
