@@ -10,7 +10,7 @@ class Result implements \Countable, \Iterator
 
     protected int $position;
 
-    public function __construct(\stdClass $json, array $blacklist=[], array $whitelist=[])
+    public function __construct(\stdClass $json, array $blacklist = [], array $whitelist = [])
     {
         $useBlacklist = count($blacklist) > 0;
         $useWhitelist = count($whitelist) > 0;
