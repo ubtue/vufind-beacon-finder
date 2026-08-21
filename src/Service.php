@@ -18,8 +18,8 @@ class Service implements \VuFind\Http\CachingDownloaderAwareInterface
     public function __construct(\Laminas\Config\Config $config)
     {
         $this->baseUrl = $config->baseUrl ?? 'http://127.0.0.1:8000';
-        $this->blacklist = $config->blacklist ?? [];
-        $this->whitelist = $config->whitelist ?? [];
+        $this->blacklist = $config->blacklist?->toArray() ?? [];
+        $this->whitelist = $config->whitelist?->toArray() ?? [];
 
         $this->downloaderCacheId = 'BEACONfinder';
     }
