@@ -2,6 +2,8 @@
 
 namespace VuFindBEACONFinder;
 
+use function count;
+
 class Result implements \Countable, \Iterator
 {
     protected \stdClass $json;
