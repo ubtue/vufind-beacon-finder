@@ -15,7 +15,7 @@ class Service implements \VuFind\Http\CachingDownloaderAwareInterface
     protected const ENDPOINT_URL_GET_BY_ID = '/records/';
     protected const ENDPOINT_URL_GET_BY_AUTHORITY_ID = '/records/by-authority/';
 
-    public function __construct(\Laminas\Config\Config $config)
+    public function __construct(\VuFind\Config\Config $config)
     {
         $this->baseUrl = $config->baseUrl ?? 'http://127.0.0.1:8000';
         $this->blacklist = $config->blacklist?->toArray() ?? [];
