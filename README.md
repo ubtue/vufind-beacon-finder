@@ -9,7 +9,24 @@ Another option might be to extend the Solr schema, add the information when impo
 
 ## Enabling the module
 
-1. Include mixin & templates
+1. Add the module to your `composer.local.json` and run `composer update`
+
+2. Load VuFindBEACONFinder module in your `config/application.config.php` `$modules` section
+
+3. Modify RecordDriver
+
+    You also need to implement the provided interface in your record driver to provide the authority id:
+    ```
+    class SolrAuthMarc implements VuFindBEACONFinder\RecordDriver\Feature\BEACONFinderInterface
+    {
+        public function getAuthorityId()
+        {
+            // return the ID depending on your custom field
+        }
+    }
+    ```
+
+4. Include mixin & templates
 
     Create a symlink `themes/beacon_finder_mixin` to `vendor/ubtue/vufind-beacon-finder/res/theme`
 
@@ -35,20 +52,7 @@ Another option might be to extend the Solr schema, add the information when impo
     ?>
     ```
 
-2. Modify RecordDriver
-
-    You also need to implement the provided interface in your record driver to provide the authority id:
-    ```
-    class SolrAuthMarc implements VuFindBEACONFinder\RecordDriver\Feature\BEACONFinderInterface
-    {
-        public function getAuthorityId()
-        {
-            // return the ID depending on your custom field
-        }
-    }
-    ```
-
-3. adjust configuration
+5. Customize configuration
 
     Per default, your BEACONfinder service is running locally on port 8000.
     If you want to change this, copy the file `res/config/BEACONfinder.ini` to your `local/config/vufind` directory
