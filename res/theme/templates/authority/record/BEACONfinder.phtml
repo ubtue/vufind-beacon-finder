@@ -1,4 +1,4 @@
-<p><b><?=htmlspecialchars($this->translate('beaconfinder_heading') !== 'beaconfinder_heading' ? $this->translate('beaconfinder_heading') : 'BEACONfinder')?></b></p>
+<p><b><?=$this->transEsc('beaconfinder_heading') !== 'beaconfinder_heading' ? $this->transEsc('beaconfinder_heading') : 'BEACONfinder'?></b></p>
 <?php $result = $this->BEACONfinder->getByAuthorityId($this->authorityId); ?>
 <?php if (!$result || count($result) == 0): ?>
   <p>Not found</p>
