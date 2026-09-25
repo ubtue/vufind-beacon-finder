@@ -8,9 +8,9 @@
     <?php foreach ($result as $item): ?>
       <li>
         <?php if (!empty($item->getTargetUri())): ?>
-          <a href="<?=$item->getTargetUri()?>" target="_blank" rel="noopener noreferrer"><?=htmlspecialchars($item->getNAME() ?: $item->getTargetUri())?></a>
+          <a href="<?=$this->escapeHtmlAttr($item->getTargetUri())?>" target="_blank" rel="noopener noreferrer"><?=$this->escapeHtml($item->getNAME() ?: $item->getTargetUri())?></a>
         <?php else: ?>
-          <?=htmlspecialchars($item->getBeaconUri())?>
+          <?=$this->escapeHtml($item->getBeaconUri())?>
         <?php endif; ?>
       </li>
     <?php endforeach; ?>
