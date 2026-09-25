@@ -8,7 +8,7 @@
     <?php foreach ($result as $item): ?>
       <li>
         <?php if (!empty($item->getTargetUri())): ?>
-          <a href="<?=$this->escapeHtmlAttr($item->getTargetUri())?>" target="_blank" rel="noopener noreferrer"><?=$this->escapeHtml($item->getNAME() ?: $item->getTargetUri())?></a>
+          <a href="<?=$this->escapeHtmlAttr($item->getTargetUri())?>" target="_blank" rel="noopener"><?=$this->escapeHtml($item->getNAME() ?: $item->getTargetUri())?></a>
         <?php else: ?>
           <?=$this->escapeHtml($item->getBeaconUri())?>
         <?php endif; ?>
