@@ -1,4 +1,5 @@
-<p><b>BEACONfinder</b></p>
+<?php $heading = $this->translate('beaconfinder_heading'); ?>
+<p><b><?=$heading !== 'beaconfinder_heading' ? $this->escapeHtml($heading) : 'BEACONfinder'?></b></p>
 <?php $result = $this->BEACONfinder->getByAuthorityId($this->authorityId); ?>
 <?php if (!$result || count($result) == 0): ?>
   <p>Not found</p>
@@ -6,10 +7,10 @@
   <ul>
     <?php foreach ($result as $item): ?>
       <li>
-        <?php if (!empty($item->getNAME()) && !empty($item->getTargetUri())): ?>
-          <a href="<?=$item->getTargetUri()?>" target="_blank"><?=htmlspecialchars($item->getNAME())?></a>
+        <?php if (!empty($item->getTargetUri())): ?>
+          <a href="<?=$this->escapeHtmlAttr($item->getTargetUri())?>" target="_blank" rel="noopener"><?=$this->escapeHtml($item->getNAME() ?: $item->getTargetUri())?></a>
         <?php else: ?>
-          <?=$item->getBeaconUri()?>
+          <?=$this->escapeHtml($item->getBeaconUri())?>
         <?php endif; ?>
       </li>
     <?php endforeach; ?>
