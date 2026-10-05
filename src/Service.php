@@ -26,7 +26,7 @@ class Service implements \VuFind\Http\CachingDownloaderAwareInterface
 
     protected function query(string $endpointUrl, string $id): ?Result
     {
-        $fullUrl = $this->baseUrl . $endpointUrl . \urlencode($id);
+        $fullUrl = $this->baseUrl . $endpointUrl . urlencode($id);
         $json = $this->cachingDownloader->downloadJson($fullUrl);
         return new Result($json, $this->blacklist, $this->whitelist);
     }
