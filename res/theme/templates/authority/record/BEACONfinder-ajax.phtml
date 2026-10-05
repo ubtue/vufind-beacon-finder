@@ -1,3 +1,8 @@
 <div id="beacon_placeholder"></div>
 <?=$this->assetManager()->outputInlineScriptLink('BEACONfinder.js')?>
-<?=$this->assetManager()->outputInlineScriptString('BEACONFinder.getReferencesByAuthorityId(' . $this->authorityId . ');')?>
+<?php
+// Make sure the Authority ID is wrapped in quotes + escaped properly, because there might be cases where it includes an X
+// or even a minus (-) sign which will lead to JS trying to interpret it as number when unquoted, e.g. '4370046-9'
+// (also for security reasons)
+?>
+<?=$this->assetManager()->outputInlineScriptString('BEACONFinder.getReferencesByAuthorityId(' . \json_encode($this->authorityId) . ');')?>
